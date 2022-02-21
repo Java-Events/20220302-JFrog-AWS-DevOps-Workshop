@@ -32,7 +32,12 @@ Kubernetes audit logs include two annotations that indicate whether or not a req
 
 ### Step-3: Generate some events
 
-TODO
+#### Create a Kubernetes Secret with JFrog API Keys
+
+```shell
+kubectl create secret docker-registry regcred \ --docker-server=REPLACE_YOUR_JFROG_ARTIFACTORY_URL \ --docker-username=REPLACE_JFROG_USERNAME \ --docker-password=REPLACE_WITH_JFROG_USER_TOKEN \
+--docker-email=REPLACE_WITH_JFROG_USER_EMAIL
+```
 
 
 ### Step-4: Analyze the events using AWS CloudWatch Insights
@@ -59,13 +64,13 @@ fields @timestamp, @message, sourceIPs.0
 | filter user.username="system:anonymous" and responseStatus.code in ["401", "403"]
 ```
 
-Plots unauthorized read operations against Secrets:
+Plots any action for secrets:
 
 ```
 fields @timestamp, @message
 | sort @timestamp desc
 | limit 100
-| filter objectRef.resource="secrets" and verb in ["get", "watch", "list"] and responseStatus.code="401"
+| filter objectRef.resource="secrets"
 | stats count() by bin(1m)
 ```
 

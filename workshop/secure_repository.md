@@ -22,7 +22,7 @@ kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/
 ### Step-2: Deploy Constraint Template
 
 ```shell
-kubectl apply -f https://FILLME
+kubectl apply -f https://raw.githubusercontent.com/Java-Events/20220302-JFrog-AWS-DevOps-Workshop/master/workshop/code/constraint_template.yaml
 ```
 
 ### Step-4: Create a constraint to include JFrog Artifactory URL
@@ -42,4 +42,12 @@ spec:
   parameters:
     repos:
       - "REPLACE-ME-WITH-JFROG-ARTIFACTORY-URL"
+```
+
+### Step-5 : Test
+
+Deploy a busybox image from DockerHub. This deployment will fail as we allow listed only JFrog Artifactory URL
+
+```shell
+kubectl create deployment my-dep --image=busybox
 ```
