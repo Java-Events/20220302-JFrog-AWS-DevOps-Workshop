@@ -63,6 +63,7 @@ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 cp ./kubectl $HOME/bin/kubectl
+
 ```
 
 ### Install `eksctl`
@@ -72,6 +73,7 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 mv /tmp/eksctl ~/bin
 eksctl version
 . <(eksctl completion bash)
+
 ```
 
 ### Identity and Access Management
@@ -81,6 +83,7 @@ aws ec2 associate-iam-instance-profile --instance-id $(curl http://169.254.169.2
 aws configure set region `curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region`
 echo "export AWS_REGION=$(curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)" >> ~/.bashrc
 bash
+
 ```
 
 ## Step-3: Cloud9 IAM setting change
