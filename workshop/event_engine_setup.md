@@ -110,4 +110,4 @@ Create a Amazon EKS Cluster by running the following command. This command will
 eksctl create cluster
 ```
 
-**This step will take around 15 minutes to complete. You can move on to the next module meanwhile**
+**This step will take around 15 minutes to complete. You can move on to the [next module](https://github.com/Java-Events/20220302-JFrog-AWS-DevOps-Workshop/blob/master/workshop/JFrog.md) meanwhile**

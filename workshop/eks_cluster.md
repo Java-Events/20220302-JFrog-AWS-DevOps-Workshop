@@ -1,4 +1,4 @@
-## Create a EKS Cluster
+## Audit Logging
 
 Collecting and analyzing [audit] logs is useful for a variety of different reasons. Logs can help with root cause analysis and attribution, i.e. ascribing a change to a particular user. When enough logs have been collected, they can be used to detect anomalous behaviors too. On EKS, the audit logs are sent to Amazon Cloudwatch Logs.
 
@@ -7,7 +7,9 @@ Collecting and analyzing [audit] logs is useful for a variety of different reaso
 The audit logs are part of the EKS managed Kubernetes control plane logs that are managed by EKS. Instructions for enabling/disabling the control plane logs, which includes the logs for the Kubernetes API server, the controller manager, and the scheduler, along with the audit log, can be found here, https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html#enabling-control-plane-log-export.
 
 ```
-eksctl utils update-cluster-logging --enable-types audit
+echo "export EKS_CLUSTERNAME=$(cut -d . -f 1 <<< $(cut -d @ -f 2 <<< $(kubectl config current-context)))" >> ~/.bashrc
+bash
+eksctl utils update-cluster-logging --cluster $EKS_CLUSTERNAME --enable-types audit
 ```
 
 Kubernetes audit logs include two annotations that indicate whether or not a request was authorized authorization.`k8s.io/decision` and the reason for the decision `authorization.k8s.io/reason`. Use these attributes to ascertain why a particular API call was allowed.

@@ -5,7 +5,10 @@ on AWS. We will cover the following topics:
 
 
 # Who is your instructor?
-### Anuj
+### Anuj Sharma - Sr. Specialist Solution Architect at AWS
+Anuj has an industry experience in infrastructure and application development space for over 16 years now.
+Right from the beginning of his career, he has worn multiple hats, as Software developer , Architect , Engineering Manager and Product Manager in variety of industry ranging from financial services to retail.  
+
 
 ### Sven Ruppert - Developer Advocate JFrog
 Sven Ruppert has been coding Java since 1996 in industrial projects and is working as Developer Advocate for JFrog.
