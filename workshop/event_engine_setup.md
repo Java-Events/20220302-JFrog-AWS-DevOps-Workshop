@@ -78,7 +78,10 @@ eksctl version
 
 ### Identity and Access Management
 
+This command first installs jq and then changes the IAM role associated with your Cloud9 instance to use `TeamRoleInstanceProfile` IAM role. `TeamRoleInstanceProfile` is pre-provisioned in the AWS accounts vended via EventEngine and has the necessary access to create EKS cluster.
+
 ```shell
+sudo yum -y install jq
 aws ec2 associate-iam-instance-profile --instance-id $(curl http://169.254.169.254/latest/meta-data/instance-id) --iam-instance-profile Name=TeamRoleInstanceProfile
 aws configure set region `curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region`
 echo "export AWS_REGION=$(curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)" >> ~/.bashrc
