@@ -49,5 +49,15 @@ spec:
 Deploy a busybox image from DockerHub. This deployment will fail as we allow listed only JFrog Artifactory URL
 
 ```shell
-kubectl create deployment my-dep --image=busybox
+kubectl run php-pod --image nginx
 ```
+
+Now create a remote repository in your artifactory instance to pull through and cache the same image from DockerHub. Follow instructions mentioned [here](https://www.jfrog.com/confluence/display/JFROG/Docker+Registry#DockerRegistry-RemoteDockerRepositories)
+
+Once you create the remote repository on artifactory, run the same command again, but this time trying to pull the image from Artifactory (which we allow listed)
+
+
+```shell
+kubectl run nginx --image=REPLACE_WITH_YOUR_ARTIFACTORY_URL/default-docker-remote/nginx/nginx
+```
+
