@@ -95,3 +95,19 @@ bash
 2. Close the **Preferences** tab.
 
     ![c9disableiam](./images/c9disableiam.png)
+
+## Step-4: Create Amazon Elastic Kubernetes Cluster (EKS)
+
+Create a Amazon EKS Cluster by running the following command. This command will
+
+* Create a VPC
+* Create a EKS Cluster in that VPC
+* Add managed nodes to the EKS Cluster created
+* Update kubeconfig, so that you can run kubectl commands.
+
+
+```shell
+eksctl create cluster
+```
+
+**This step will take around 15 minutes to complete. You can move on to the next module meanwhile**

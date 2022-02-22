@@ -2,23 +2,7 @@
 
 Collecting and analyzing [audit] logs is useful for a variety of different reasons. Logs can help with root cause analysis and attribution, i.e. ascribing a change to a particular user. When enough logs have been collected, they can be used to detect anomalous behaviors too. On EKS, the audit logs are sent to Amazon Cloudwatch Logs.
 
-### Step-1: Create Amazon Elastic Kubernetes Cluster (EKS)
-
-Create a Amazon EKS Cluster by running the following command. This command will
-
-* Create a VPC
-* Create a EKS Cluster in that VPC
-* Add managed nodes to the EKS Cluster created
-* Update kubeconfig, so that you can run kubectl commands.
-
-
-```shell
-eksctl create cluster
-```
-
-**This step will take around 15 minutes to complete**
-
-### Step-2: Enable EKS Control Plane audit logging
+### Step-1: Enable EKS Control Plane audit logging
 
 The audit logs are part of the EKS managed Kubernetes control plane logs that are managed by EKS. Instructions for enabling/disabling the control plane logs, which includes the logs for the Kubernetes API server, the controller manager, and the scheduler, along with the audit log, can be found here, https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html#enabling-control-plane-log-export.
 
@@ -30,7 +14,7 @@ Kubernetes audit logs include two annotations that indicate whether or not a req
 
 
 
-### Step-3: Generate some events
+### Step-2: Generate some events
 
 #### Create a Kubernetes Secret with JFrog API Keys
 
@@ -40,7 +24,7 @@ kubectl create secret docker-registry regcred \ --docker-server=REPLACE_YOUR_JFR
 ```
 
 
-### Step-4: Analyze the events using AWS CloudWatch Insights
+### Step-3: Analyze the events using AWS CloudWatch Insights
 
 Open the [AWS CloudWatch Insights](https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#logsV2:logs-insights) and run the following queries to visialize the data
 
