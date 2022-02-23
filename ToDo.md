@@ -43,7 +43,7 @@ docker push svenr-docker.jfrog.io/svenruppert/helidon-quickstart-se:20211208-001
 
 -> create Access Token for AWS access
 -- for user anonymous as user
--- activate the anonymous user
+-- activate the anonymous user - Security section
 
 
 ## usage of the docker image
